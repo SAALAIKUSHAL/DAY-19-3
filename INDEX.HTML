@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cat Facts</title>
+    <script>
+        function getCatFact() {
+            fetch('https://cat-fact.herokuapp.com/facts/random')
+                .then(response => response.json())
+                .then(data => {
+                    const fact = data.text;
+                    const factDiv = document.getElementById('fact');
+                    factDiv.textContent = fact;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+</head>
+<body style="background-color: bisque;">
+    <h1 style="text-align: center;">Cat Facts</h1>
+    <button  class="btn btn-" style="margin-left: 370px;"onclick="getCatFact()">Get Random Cat Fact</button>
+    <div id="fact"></div>
+</body>
+</html>
